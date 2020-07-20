@@ -16,7 +16,7 @@ spec:
         paths:
           - backend:
               serviceName: httpbin
-              servicePort: 8000
+              servicePort: 8080
             path: /
   tls:
     - hosts:
