@@ -1,0 +1,6 @@
+namespace: httpbin
+resources:
+  - deployment.yaml
+  - ingress.yaml
+  - namespace.yaml
+  - service.yaml

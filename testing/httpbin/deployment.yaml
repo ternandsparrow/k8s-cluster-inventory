@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin
+  labels:
+    app.kubernetes.io/name: httpbin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: httpbin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: httpbin
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+      containers:
+        - name: httpbin
+          args:
+            - gunicorn
+            - -b
+            - 0.0.0.0:8080
+            - httpbin:app
+            - -k
+            - gevent
+          env:
+            - name: BLAH
+              value: "asdf"
+          image: kennethreitz/httpbin # no tags :'(
+          imagePullPolicy: IfNotPresent
+          # livenessProbe:
+          #    TODO:
+          # readinessProbe:
+          #    TODO:
+          resources:
+            requests:
+              cpu: 10m
+              memory: 200Mi
