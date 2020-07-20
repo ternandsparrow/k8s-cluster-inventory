@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: httpbin
+  namespace: surveillance
   labels:
     app.kubernetes.io/name: httpbin
   annotations:

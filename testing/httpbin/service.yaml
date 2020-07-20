@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: httpbin
+  namespace: surveillance
   labels:
     app.kubernetes.io/name: httpbin
 spec:
