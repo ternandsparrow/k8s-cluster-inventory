@@ -2,12 +2,10 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: httpbin
-  namespace: surveillance
   labels:
     app.kubernetes.io/name: httpbin
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/proxy-body-size: 100m
     cert-manager.io/cluster-issuer: "letsencrypt"
 spec:
   rules:

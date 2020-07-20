@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: httpbin
-  namespace: surveillance
   labels:
     app.kubernetes.io/name: httpbin
 spec:
@@ -16,6 +15,11 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: httpbin
+        app.kubernetes.io/instance: httpbin-test
+        app.kubernetes.io/version: "latest"
+        app.kubernetes.io/managed-by: fluxcd
+        app.kubernetes.io/component: server
+        app.kubernetes.io/part-of: httpbin
     spec:
       automountServiceAccountToken: false
       securityContext:
