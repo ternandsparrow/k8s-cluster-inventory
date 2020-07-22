@@ -1,4 +1,4 @@
-namespace: httpbin
+namespace: surveillance
 resources:
   - deployment.yaml
   - ingress.yaml
